@@ -310,7 +310,8 @@ status_t PublicVolume::doFormat(const std::string& fsType) {
 
     int ret = 0;
     if (fsType == "auto") {
-        ret = vfat::Format(mDevPath, 0);
+        // ret = vfat::Format(mDevPath, 0);
+        ret = ext4::Format(mDevPath, 0, mRawPath);
 #ifdef CONFIG_EXFAT_DRIVER
     } else if (fsType == "exfat") {
         ret = exfat::Format(mDevPath);
